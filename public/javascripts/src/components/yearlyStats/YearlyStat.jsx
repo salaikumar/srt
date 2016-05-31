@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import AppStore from '../../store/AppStore';
 import YearConstants from '../../constants/YearConstants';
 import appUtils from '../../utils/appUtils';
+
 var arrayOfYears = new Array();
-var matches = [];
+
 class YearlyStat extends Component{
   constructor(props){
     super(props);
@@ -12,9 +13,7 @@ class YearlyStat extends Component{
       arrayOfYears: []
     };
   }
-
   render(){
-
     return(
       <div>
       {
@@ -27,9 +26,10 @@ class YearlyStat extends Component{
   componentWillMount(){
     this.getYearlyMatches();
   }
+
   getYearlyMatches(){
     YearConstants.years.map((year,index)=>{
-      var matches = 0,runs = 0, catches = 0,hundreds = 0,fifties = 0;
+      var matches = 0,runs = 0, catches = 0,hundreds = 0,fifties = 0,wickets = 0;
       this.state.sachinData.data.map((data,index)=>{
         var date = new Date(data.date);
         if(date.getFullYear() === year){
@@ -39,6 +39,10 @@ class YearlyStat extends Component{
           }
           if(!isNaN(parseInt(data.catches))){
               catches += parseInt(data.catches);
+          }
+
+          if(!isNaN(parseInt(data.wickets))){
+              wickets += parseInt(data.wickets);
           }
           if(parseInt(data.batting_score)>= 50 && parseInt(data.batting_score)<100){
             fifties += 1;
@@ -53,9 +57,11 @@ class YearlyStat extends Component{
         runs: runs,
         catches: catches,
         fifties: fifties,
-        hundreds: hundreds
+        hundreds: hundreds,
+        wickets: wickets
       };
     });
+
   }
   renderCharts(){
     var chartData = {
@@ -68,7 +74,7 @@ class YearlyStat extends Component{
       },
       "series":[
         {
-          "values": appUtils.getMatchperyear(this.state.arrayOfYears)
+          "values": appUtils.getMethodName(this.props.value,this.state.arrayOfYears)
         }
       ]
     };

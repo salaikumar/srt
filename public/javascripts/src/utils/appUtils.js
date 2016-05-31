@@ -21,5 +21,51 @@ module.exports = {
         return arrayOfYears[year].matches;
         })
       );
+  },
+  getRunsperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].runs;
+        })
+      );
+  },
+  getWicketsperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].wickets;
+        })
+      );
+  },
+  getCatchesperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].catches;
+        })
+      );
+  },
+  getFiftiesperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].fifties;
+        })
+      );
+  },
+  getHundredsperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].hundreds;
+        })
+      );
+  },
+  getMethodName(methodName,arrayOfYears){
+    var methodLookup = {
+      'matches': this.getMatchperyear(arrayOfYears),
+      'runs': this.getRunsperyear(arrayOfYears),
+      'catches': this.getCatchesperyear(arrayOfYears),
+      'hundreds': this.getHundredsperyear(arrayOfYears),
+      'fifties': this.getFiftiesperyear(arrayOfYears),
+      'wickets': this.getWicketsperyear(arrayOfYears)
+    };
+    return methodLookup[methodName];
   }
 };

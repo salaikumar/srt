@@ -49,9 +49,7 @@ class RenderBatting extends Component{
       'WestIndies': <WestIndies />,
       'Zimbabwe': <Zimbabwe />
     }
-    console.log(this.state.renderState);
     var Country = this.state.renderState;
-    console.log('Country', Country);
     return(
       <div className="container-fluid">
         <div className="row">
