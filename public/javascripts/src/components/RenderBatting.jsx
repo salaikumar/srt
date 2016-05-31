@@ -1,19 +1,5 @@
 import React, {Component} from 'react';
-import Australia from './versus/Australia';
-import Bangladesh from './versus/Bangladesh';
-import Bermuda from './versus/Bermuda';
-import England from './versus/England';
-import Ireland from './versus/Ireland';
-import Kenya from './versus/Kenya';
-import Namibia from './versus/Namibia';
-import Netherland from './versus/Netherland';
-import NewZealand from './versus/NewZealand';
-import Pakistan from './versus/Pakistan';
-import SouthAfrica from './versus/SouthAfrica';
-import SriLanka from './versus/SriLanka';
-import UAE from './versus/UAE';
-import WestIndies from './versus/WestIndies';
-import Zimbabwe from './versus/Zimbabwe';
+import battingUtils from '../utils/battingUtils';
 class RenderBatting extends Component{
 
   constructor(props){
@@ -31,23 +17,6 @@ class RenderBatting extends Component{
   render(){
     if(!this.state.renderState == ""){
       var versus = "Sachin vs " + this.state.renderState;
-    }
-    var componentLookup = {
-      'Australia': <Australia />,
-      'Bangladesh': <Bangladesh />,
-      'Bermuda': <Bermuda />,
-      'England': <England />,
-      'Ireland': <Ireland />,
-      'Kenya': <Kenya />,
-      'Namibia': <Namibia />,
-      'Netherland': <Netherland />,
-      'NewZealand': <NewZealand />,
-      'Pakistan': <Pakistan />,
-      'SouthAfrica': <SouthAfrica />,
-      'SriLanka': <SriLanka />,
-      'UAE': <UAE />,
-      'WestIndies': <WestIndies />,
-      'Zimbabwe': <Zimbabwe />
     }
     var Country = this.state.renderState;
     return(
@@ -111,13 +80,13 @@ class RenderBatting extends Component{
               </div>
             </div>
           </div>
-          <div className="col-xs-8 text-center" id="renderChart">
-            <h3>
+          <div className="col-xs-8 text-center" id="versusChart">
+            <h3 className="versus">
             {
               versus
             }
             </h3>
-            {componentLookup[this.state.renderState]}
+            {battingUtils.getComponentName(this.state.renderState)}
           </div>
           <div className="col-xs-1 pull-right">
           <div className="row">
