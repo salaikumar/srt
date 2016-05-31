@@ -1,8 +1,32 @@
 body {
-  padding: 50px;
+  padding: 0;
+  margin: 0;
+  width: 100%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header{
+  background-color: blue;
 }
 
 a {
   color: #00B7FF;
+}
+
+.roundBox{
+  background: #00cc00;
+border-radius: 20px;
+text-align: center;
+min-width: 100px;
+width: 20em;
+margin-right: 50px;
+color: #FFF;
+border: 1px solid peru;
+height: 10em;
+}
+#chart{
+  width: 100%;
+}
+.against{
+  
 }
