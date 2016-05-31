@@ -1,5 +1,6 @@
 import PapaParse from 'papaparse';
 import AppActions from '../actions/AppActions';
+import YearConstants from '../constants/YearConstants';
 var sachinData = "";
 module.exports = {
   readFile(){
@@ -13,5 +14,12 @@ module.exports = {
       }
     });
     return sachinData;
+  },
+  getMatchperyear(arrayOfYears){
+    return(
+        YearConstants.years.map((year,index)=>{
+        return arrayOfYears[year].matches;
+        })
+      );
   }
 };

@@ -23,36 +23,41 @@ class Zimbabwe extends Component{
   render(){
     return(
       <div className="text-center">
-        Sachin vs Zimbabwe
-        <RadioButton name="versus" selectedValue={this.state.selectedValue} onChange={this.handleChange.bind(this)}>
-            {
-              Radio=>(
-                <div>
-                  <label className="radio-inline">
-                    <Radio value="matches" />Matches
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="runs" />Runs
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="highest" />Highest
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="100" />100s
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="50" />50s
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="wickets" />Wickets
-                  </label>
-                  <label className="radio-inline">
-                    <Radio value="catches" />Catches
-                  </label>
-                </div>
-              )
-            }
-        </RadioButton>
+      <div className="row">
+        <div className="col-xs-3">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            Matches
+            <p>1000</p>
+          </div>
+        </div>
+        </div>
+        <div className="col-xs-3">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            TotalRuns
+            <p>1000</p>
+          </div>
+        </div>
+        </div>
+        <div className="col-xs-3">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            Wickets
+            <p>1000</p>
+          </div>
+        </div>
+        </div>
+        <div className="col-xs-3">
+        <div className="panel panel-default">
+          <div className="panel-body">
+            Wickets
+            <p>1000</p>
+          </div>
+        </div>
+        </div>
+      </div>
+
         {
           this.renderZimChart()
         }
@@ -60,8 +65,6 @@ class Zimbabwe extends Component{
     )
   }
   renderZimChart(){
-    console.log(document.getElementById('sachin').children);
-    console.log(document.getElementById('renderChart'));
     var matchPlayed = 0,
         runs = 0,
         wickets = 0,
@@ -73,33 +76,29 @@ class Zimbabwe extends Component{
     this.state.sachinData.data.map((data,index)=>{
       if(data.opposition == "v Zimbabwe"){
         matchPlayed += 1;
-        runs += parseInt(data.batting_score);
+        if(!isNaN(data.batting_score)){
+          runs += parseInt(data.batting_score);
+
+        }
         //wickets += wickets;
         catches += parseInt(data.catches);
         if(parseInt(data.batting_score) >= 50 && parseInt(data.batting_score) <100 ){
-          console.log('fifties',data.batting_score);
           fifties += 1;
         }
         if(parseInt(data.batting_score) >= 100 ){
           hundreds += 1;
         }
+        console.log(data.ground);
       }
     });
-
-    var myConfig = {
-      type: 'bar',
-      series: [
-        {
-          values: [matchPlayed]
-        }
-      ]
-    };
-    zingchart.render({
-      id: 'renderChart',
-      data: myConfig,
-      height: '30%',
-      width: '50%'
-    });
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Panel title</h3>
+      </div>
+      <div class="panel-body">
+        Panel content
+      </div>
+  </div>
   }
 }
 export default Zimbabwe;
