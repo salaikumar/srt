@@ -17,12 +17,12 @@ class RenderYears extends Component{
   }
   render(){
     return(
-      <div className="container-fluid">
-        Over the years of Sachin
+      <div className="container-fluid overYears">
+        <h4 className="pull-left">Sachin's performance over the years</h4>
         <RadioGroup name="years" selectedValue={this.state.selectedValue} onChange={this.handleChange.bind(this)}>
           {
             Radio=>(
-              <div className="text-center">
+              <div className="pull-right">
                 <label className="radio-inline">
                   <Radio value="matches" />Matches
                 </label>

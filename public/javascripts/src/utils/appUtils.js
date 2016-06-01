@@ -1,6 +1,7 @@
 import PapaParse from 'papaparse';
 import AppActions from '../actions/AppActions';
 import YearConstants from '../constants/YearConstants';
+import awards from '../../../data/awards.json';
 var sachinData = "";
 module.exports = {
   readFile(){
@@ -67,5 +68,9 @@ module.exports = {
       'wickets': this.getWicketsperyear(arrayOfYears)
     };
     return methodLookup[methodName];
+  },
+  getAwards(){
+    console.log(awards);
+    AppActions.receiveAwards(awards);
   }
 };

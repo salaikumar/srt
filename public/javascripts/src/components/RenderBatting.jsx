@@ -5,14 +5,19 @@ class RenderBatting extends Component{
   constructor(props){
     super(props);
     this.state = {
-      renderState : ""
+      renderState : "Australia"
     }
   }
 
-  renderCountry(country){
+  renderCountry(country,event){
+    console.log(event.currentTarget);
     this.setState({
       renderState: country
     });
+  }
+  componentDidMount(){
+    console.log(document.getElementById('versusChart'));
+    this.renderAusChart(this.refs['australia'].state.againstAUS);
   }
   render(){
     if(!this.state.renderState == ""){
@@ -33,14 +38,14 @@ class RenderBatting extends Component{
             <div className="row">
               <div className="col-xs-12">
                 <a href="#" data-toggle="tooltip" title="Bangladesh" >
-                  <img src="/images/Bangladesh-Flag-256.png" alt="Bangladesh" onClick={this.renderCountry.bind(this,"Australia")} className="img-responsive"/>
+                  <img src="/images/Bangladesh-Flag-256.png" alt="Bangladesh" onClick={this.renderCountry.bind(this,"Bangladesh")} className="img-responsive"/>
                 </a>
               </div>
             </div>
             <div className="row">
               <div className="col-xs-12">
                 <a href="#" data-toggle="tooltip" title="Bermuda" >
-                  <img src="/images/Bermuda.png" alt="Bermuda" onClick={this.renderCountry.bind(this,"Bermuda")} className="img-responsive against"/>
+                  <img src="/images/Bermuda-256.png" alt="Bermuda" onClick={this.renderCountry.bind(this,"Bermuda")} className="img-responsive against"/>
                 </a>
               </div>
             </div>
@@ -68,7 +73,7 @@ class RenderBatting extends Component{
             <div className="row">
               <div className="col-xs-12">
                 <a href="#" data-toggle="tooltip" title="Namibia" >
-                  <img src="/images/Namibia.png" alt="Namibia" onClick={this.renderCountry.bind(this,"Namibia")} className="img-responsive against"/>
+                  <img src="/images/Namibia-256.png" alt="Namibia" onClick={this.renderCountry.bind(this,"Namibia")} className="img-responsive against"/>
                 </a>
               </div>
             </div>
@@ -80,14 +85,19 @@ class RenderBatting extends Component{
               </div>
             </div>
           </div>
-          <div className="col-xs-8 text-center" id="versusChart">
-            <h3 className="versus">
-            {
-              versus
-            }
-            </h3>
-            {battingUtils.getComponentName(this.state.renderState)}
-          </div>
+              <div className="col-xs-10 text-center">
+              <div className="panel panel-default">
+                <div className="panel-body" id="versusChart">
+                <h3 className="versus">
+                {
+                  versus
+                }
+                </h3>
+                {battingUtils.getComponentName(this.state.renderState)}
+                </div>
+              </div>
+              </div>
+
           <div className="col-xs-1 pull-right">
           <div className="row">
             <div className="col-xs-12">
@@ -120,14 +130,14 @@ class RenderBatting extends Component{
           <div className="row">
             <div className="col-xs-12">
               <a href="#" data-toggle="tooltip" title="UAE">
-                <img src="/images/UAE.png" alt="UAE" onClick={this.renderCountry.bind(this,"UAE")} className="img-responsive against"/>
+                <img src="/images/uae-256.png" alt="UAE" onClick={this.renderCountry.bind(this,"UAE")} className="img-responsive against"/>
               </a>
             </div>
           </div>
           <div className="row">
             <div className="col-xs-12">
               <a href="#" data-toggle="tooltip" title="WestIndies">
-                <img src="/images/WestIndies.png" alt="WestIndies" onClick={this.renderCountry.bind(this,"WestIndies")} className="img-responsive"/>
+                <img src="/images/westindies-256.png" alt="WestIndies" onClick={this.renderCountry.bind(this,"WestIndies")} className="img-responsive west"/>
               </a>
             </div>
           </div>
@@ -142,6 +152,33 @@ class RenderBatting extends Component{
         </div>
       </div>
     )
+  }
+  renderAusChart(againstAUS){
+    var config = {
+      "type": "pie",
+      "legend":{
+        "margin-right": "25px"
+      },
+      "series": [
+        {
+        "values": [againstAUS.won],
+        "text": "Won " + [againstAUS.won]
+      },
+      {
+        "values": [againstAUS.lost],
+        "text": "Lost " + [againstAUS.lost]
+      },
+      {
+          "values": [againstAUS.nr],
+          "text": "No result " + [againstAUS.nr]
+      }
+    ]
+    };
+    zingchart.render({
+      id: "versusChart",
+      data: config,
+      height: "400px"
+    })
   }
 }
 export default RenderBatting;

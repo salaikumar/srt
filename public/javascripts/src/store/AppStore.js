@@ -5,7 +5,8 @@ import appUtils from '../utils/appUtils';
 var EventEmitter = require('events').EventEmitter;
 var CHANGE_EVENT = 'change';
 
-var _sachinData = "";
+var _sachinData = "",
+    _awards = "";
 var AppStore = assign({},EventEmitter.prototype,{
     addChangeListener(callback){
         this.on('change',callback);
@@ -23,36 +24,13 @@ var AppStore = assign({},EventEmitter.prototype,{
     getSachinData(){
       console.log('called');
       return _sachinData;
+    },
+    receiveAwards(awards){
+      _awards = awards;
+    },
+    getAwards(){
+      return _awards;
     }
-    /*saveContact(contacts){
-        _contacts.push(contacts);
-        console.log('_contacts',_contacts);
-    },
-    getContacts(){
-        return _contacts;
-    },
-    receiveContacts(contacts){
-        _contacts = contacts;
-    },
-    removeContact(contactId){
-        var index = _contacts.findIndex(x => x.id === contactId);
-        _contacts.splice(index,1);
-    },
-    editContact(editContact){
-        _contact_to_edit = editContact;
-    },
-    getContactToEdit(){
-        return _contact_to_edit;
-    },
-    updateContact(updateContact){
-        for(var i=0;i<_contacts.length;i++){
-            if(_contacts[i].id == updateContact.id){
-                _contacts.splice(i,1);
-                _contacts.push(updateContact);
-            }
-        }
-    }*/
-
 });
 
 AppDispatcher.register(function(payload){
@@ -63,6 +41,10 @@ AppDispatcher.register(function(payload){
 
             AppStore.parseSachinData(action.sachinData);
 
+            AppStore.emit(CHANGE_EVENT);
+            break;
+        case AppConstants.GET_AWARDS:
+            AppStore.receiveAwards(action.awards);
             AppStore.emit(CHANGE_EVENT);
             break;
         /*case AppConstants.RECEIVE_CONTACT:

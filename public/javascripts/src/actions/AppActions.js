@@ -6,6 +6,12 @@ var AppActions = {
         actionType: AppConstants.GET_SACHIN_DATA,
         sachinData : data
       });
+    },
+    receiveAwards(awards){
+      AppDispatcher.handleViewActions({
+        actionType: AppConstants.GET_AWARDS,
+        awards: awards
+      });
     }
   }
 module.exports = AppActions;

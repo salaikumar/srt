@@ -66,6 +66,9 @@ class YearlyStat extends Component{
   renderCharts(){
     var chartData = {
       "type":"bar",
+      "plot":{
+        "border-radius": "5px"
+      },
       "plotarea":{
         "adjust-layout": true
       },

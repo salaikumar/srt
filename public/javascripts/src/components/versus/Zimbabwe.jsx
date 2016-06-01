@@ -21,7 +21,7 @@ class Zimbabwe extends Component{
         <div className="row">
           <div className="col-xs-4">
           <div className="panel panel-default">
-            <div className="panel-body">
+            <div className="panel-body panelBackground">
               <h3>Matches</h3>
               <p>{this.state.againstZim.matchPlayed}</p>
               <h3>TotalRuns</h3>
@@ -31,7 +31,7 @@ class Zimbabwe extends Component{
           </div>
           <div className="col-xs-4">
           <div className="panel panel-default">
-            <div className="panel-body">
+            <div className="panel-body panelBackground">
               <h3>Wickets</h3>
               <p>{this.state.againstZim.wickets}</p>
               <h3>Catches</h3>
@@ -41,7 +41,7 @@ class Zimbabwe extends Component{
           </div>
           <div className="col-xs-4">
           <div className="panel panel-default">
-            <div className="panel-body">
+            <div className="panel-body panelBackground">
               <h3>50s</h3>
               <p>{this.state.againstZim.fifties}</p>
               <h3>100s</h3>
@@ -55,28 +55,31 @@ class Zimbabwe extends Component{
     )
   }
   renderChart(){
-    var chartData = {
-      "type":"pie",
-      "plotarea":{
-        "adjust-layout": true
+    var config = {
+      "type": "pie",
+      "legend":{
+        "margin-right": "25px"
       },
-      "series":[
-        {"values":[59,55,30,28,15]},
-        {"values":[55]},
-        {"values":[30]},
-        {"values":[28]},
-        {"values":[15]}
-      ]
+      "series": [
+        {
+        "values": [this.state.againstZim.won],
+        "text": "Won " + [this.state.againstZim.won]
+      },
+      {
+        "values": [this.state.againstZim.lost],
+        "text": "Lost " + [this.state.againstZim.lost]
+      },
+      {
+          "values": [this.state.againstZim.nr],
+          "text": "No result " + [this.state.againstZim.nr]
+      }
+    ]
     };
-    //setTimeout(function(){
-      zingchart.render({
-        id: 'versusChart',
-        data: chartData,
-        height: '500px',
-        width: '500px'
-      });
-    //},1)
-
+    zingchart.render({
+      id: "versusChart",
+      data: config,
+      height: "400px"
+    })
   }
   renderZimChart(){
     var matchPlayed = 0,
@@ -85,12 +88,15 @@ class Zimbabwe extends Component{
         catches = 0,
         fifties = 0,
         hundreds = 0,
-        highest = 0;
+        highest = 0,
+        won = 0,
+        lost = 0,
+        nr = 0;
     var values = new Array();
     this.state.sachinData.data.map((data,index)=>{
       if(data.opposition == "v Zimbabwe"){
         matchPlayed += 1;
-        if(!isNaN(data.batting_score)){
+        if(!isNaN(parseInt(data.batting_score))){
           runs += parseInt(data.batting_score);
         }
         if(!isNaN(parseInt(data.catches))){
@@ -105,6 +111,13 @@ class Zimbabwe extends Component{
         if(parseInt(data.batting_score) >= 100 ){
           hundreds += 1;
         }
+        if(data.match_result == 'won'){
+          won += 1;
+        }else if(data.match_result == 'lost'){
+          lost += 1;
+        }else{
+          nr += 1;
+        }
         values.push(data.ground);
       }
 
@@ -114,7 +127,10 @@ class Zimbabwe extends Component{
         catches: catches,
         wickets: wickets,
         fifties: fifties,
-        hundreds: hundreds
+        hundreds: hundreds,
+        won: won,
+        lost: lost,
+        nr: nr
       }
     });
   }
