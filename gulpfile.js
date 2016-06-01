@@ -15,10 +15,13 @@ gulp.task('browserify',function(){
     .pipe(gulp.dest('public/javascripts/dist/js'))
 });
 
-gulp.task('watch',function(){
-  gulp.watch('public/javascripts/src/**/*.*',['browserify']);
-});
+// gulp.task('watch',function(){
+//   gulp.watch('public/javascripts/src/**/*.*',['browserify']);
+// });
 
+// gulp.task('default',function(cb){
+//   runSequence('browserify','watch',cb);
+// });
 gulp.task('default',function(cb){
-  runSequence('browserify','watch',cb);
+  runSequence('browserify',cb);
 });

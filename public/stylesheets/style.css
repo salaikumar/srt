@@ -54,13 +54,19 @@ height: 10em;
   width: 12em;
     height: 8em;
     margin-left: 88em;
-    margin-top: -2em;
+    margin-top: -6em;
 }
 .sign{
-
+  margin-left: 48em;
+  font-weight: 900;
+  font-size: 20px;
 }
 .tagline{
-  
+  font-size: xx-large;
+font-style: italic;
+font-weight: 600;
+margin-left: -6em;
+padding-top: 6px;
 }
 .cardContent{
   margin-left: 18em;

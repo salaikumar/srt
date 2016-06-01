@@ -65,7 +65,7 @@ class Sachin extends Component{
         <section>
           <ul className="nav nav-tabs">
             <li role="presentation" className={this.state.tabStatus.overview} onClick={this.renderTabs.bind(this,"overview")}><a href="#">Overview</a></li>
-            <li role="presentation" className={this.state.tabStatus.versus} onClick={this.renderTabs.bind(this,"batting")}><a href="#">Batting</a></li>
+            <li role="presentation" className={this.state.tabStatus.versus} onClick={this.renderTabs.bind(this,"batting")}><a href="#">Versus</a></li>
             <li role="presentation" className={this.state.tabStatus.years} onClick={this.renderTabs.bind(this,"years")}><a href="#">Over the years</a></li>
           </ul>
         </section>
