@@ -11,7 +11,6 @@ module.exports = {
       complete: function(results){
         sachinData =  results;
         AppActions.parseSachinData(sachinData);
-        console.log('utils',sachinData);
       }
     });
     return sachinData;
@@ -70,7 +69,6 @@ module.exports = {
     return methodLookup[methodName];
   },
   getAwards(){
-    console.log(awards);
     AppActions.receiveAwards(awards);
   }
 };

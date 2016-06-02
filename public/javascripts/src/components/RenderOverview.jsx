@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import AppStore from '../store/AppStore';
+
 class RenderOverview extends Component{
   constructor(props){
     super(props);
@@ -13,7 +14,6 @@ class RenderOverview extends Component{
     this.getTotal()
   }
   render(){
-    console.log('awards',this.state.awards);
     return(
       <div className="container-fluid">
         <div className="row">

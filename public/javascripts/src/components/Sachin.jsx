@@ -3,6 +3,7 @@ import RenderOverview from './RenderOverview';
 import AppStore from '../store/AppStore';
 import RenderYears from './RenderYears';
 import RenderBatting from './RenderBatting';
+
 class Sachin extends Component{
   constructor(props){
     super(props);
@@ -25,8 +26,8 @@ class Sachin extends Component{
       sachinData : AppStore.getSachinData()
     })
   }
+
   render(){
-    console.log(this.state.renderTab);
     var renderView = "";
     if(this.state.renderTab == "overview"){
       this.state.tabStatus = {

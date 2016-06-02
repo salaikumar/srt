@@ -3,6 +3,7 @@ import AppStore from '../store/AppStore';
 import jsonQuery from 'json-query';
 import YearlyStat from './yearlyStats/YearlyStat';
 import RadioGroup from 'react-radio-group';
+
 class RenderYears extends Component{
   constructor(props){
     super(props);

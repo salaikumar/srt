@@ -12,7 +12,6 @@ class Australia extends Component{
   }
 
   componentWillMount(){
-    console.log(this.state.againstAUS);
     this.renderAUSChart();
   }
 

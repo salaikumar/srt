@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import battingUtils from '../utils/battingUtils';
+
 class RenderBatting extends Component{
 
   constructor(props){
@@ -16,7 +17,6 @@ class RenderBatting extends Component{
     });
   }
   componentDidMount(){
-    console.log(document.getElementById('versusChart'));
     this.renderAusChart(this.refs['australia'].state.againstAUS);
   }
   render(){

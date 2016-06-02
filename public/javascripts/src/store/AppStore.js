@@ -15,14 +15,12 @@ var AppStore = assign({},EventEmitter.prototype,{
         this.removeListener('change',callback);
     },
     emitChange(){
-        console.log('emitter');
         this.emit(CHANGE_EVENT);
     },
     parseSachinData(sachinData){
       _sachinData = sachinData;
     },
     getSachinData(){
-      console.log('called');
       return _sachinData;
     },
     receiveAwards(awards){
@@ -37,7 +35,6 @@ AppDispatcher.register(function(payload){
     var action = payload.action;
     switch (action.actionType){
         case AppConstants.GET_SACHIN_DATA:
-            console.log('Getting sachin data...');
 
             AppStore.parseSachinData(action.sachinData);
 
@@ -47,45 +44,6 @@ AppDispatcher.register(function(payload){
             AppStore.receiveAwards(action.awards);
             AppStore.emit(CHANGE_EVENT);
             break;
-        /*case AppConstants.RECEIVE_CONTACT:
-            console.log('Receiving Contact...');
-
-            //store save
-            AppStore.receiveContacts(action.contacts);
-
-            //EmitChange
-            AppStore.emit(CHANGE_EVENT);
-            break;
-        case AppConstants.REMOVE_CONTACT:
-            console.log('Remove Contact...');
-
-            //store save
-            AppStore.removeContact(action.contactId);
-
-            appApi.removeContact(action.contactId);
-            //EmitChange
-            AppStore.emit(CHANGE_EVENT);
-            break;
-        case AppConstants.EDIT_CONTACT:
-            console.log('Editing Contact...');
-
-            //store save
-            AppStore.editContact(action.editContact);
-
-            //appApi.removeContact(action.contactId);
-            //EmitChange
-            AppStore.emit(CHANGE_EVENT);
-            break;
-        case AppConstants.UPDATE_CONTACT:
-            console.log('Updating Contact...');
-
-            //store save
-            AppStore.updateContact(action.updateContact);
-
-            appApi.updateContact(action.updateContact);
-            //EmitChange
-            AppStore.emit(CHANGE_EVENT);
-            break;*/
     }
     return true;
 });
