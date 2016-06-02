@@ -59,7 +59,7 @@ class Sachin extends Component{
               <span className="tagline">“Enjoy the game, chase your dreams because dreams do come true”</span>
             </p>
             <p className="sign">- Sachin Tendulkar</p>
-            <img src="/images/background/sachin3.png" alt="SachinTendulkar" className="img-responsive img-rounded sachinImage"/>
+            <img src="/images/background/sachin2.png" alt="SachinTendulkar" className="img-responsive img-rounded sachinImage"/>
           </div>
         </header><br />
         <br />
