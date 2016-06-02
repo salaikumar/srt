@@ -14,6 +14,7 @@ class RenderOverview extends Component{
     this.getTotal()
   }
   render(){
+    console.log(this.state.awards);
     return(
       <div className="container-fluid">
         <div className="row">
@@ -106,6 +107,16 @@ class RenderOverview extends Component{
           </div>
         </div>
 
+        <div className="row about">
+          <div className="col-xs-12 text-center">
+            <strong className="aboutText">To the men who play for the spirit of cricket and to all the critics who found peace on his retirement, these are just a bunch of numbers and figures that show his rise and fall.
+            The vibration that sets in as the Master Blaster enters and the chants of his name will remain an irrevocable memory to cherish.
+            </strong>
+            <p className="godText">" The God of Cricket He Is!!!"</p>
+          </div>
+        </div>
+
+
         <div className="row">
           <div className="col-xs-12 text-center">
               <div className="panel panel-defalut text-center">
@@ -113,8 +124,7 @@ class RenderOverview extends Component{
                   <div className="row cardContent">
                     <div className="col-xs-2">
                       <h4>TIME</h4>
-                      <p>The God Of Big Things
-                      As India's top cricketer--and the world's best athlete--Sachin Tendulkar carries the burden of a billion dreams...</p>
+                      <p>The God Of Big Things, As India's top cricketer--and the world's best athlete--Sachin Tendulkar carries the burden of a billion dreams...</p>
                       <a href="http://content.time.com/time/magazine/article/0,9171,2114425,00.html">Read more...</a>
                     </div>
                     <div className="vertical col-xs-1"></div>

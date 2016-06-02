@@ -46,9 +46,12 @@ class RenderYears extends Component{
             )
           }
         </RadioGroup>
-
-        <div id="yearChart">
-          <YearlyStat value={this.state.selectedValue}/>
+        <div className="row">
+          <div className="col-xs-12">
+            <div id="yearChart">
+              <YearlyStat value={this.state.selectedValue}/>
+            </div>
+          </div>
         </div>
       </div>
     )

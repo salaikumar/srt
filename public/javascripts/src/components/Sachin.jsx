@@ -55,11 +55,15 @@ class Sachin extends Component{
       <div className="container-fluid">
         <header>
           <div className="nav navbar-default">
-            <p className="text-center">
-              <span className="tagline">“Enjoy the game, chase your dreams because dreams do come true”</span>
-            </p>
-            <p className="sign">- Sachin Tendulkar</p>
-            <img src="/images/background/sachin2.png" alt="SachinTendulkar" className="img-responsive img-rounded sachinImage"/>
+            <div className="row">
+              <div className="col-xs-10">
+                <span className="tagline text-center pull-right">“Enjoy the game, chase your dreams because dreams do come true”</span>
+                <p className="sign pull-right">- Sachin Tendulkar</p>
+              </div>
+              <div className="col-xs-2">
+                <img src="/images/background/sachin2.png" alt="SachinTendulkar" className="img-responsive img-rounded sachinImage pull-right"/>
+              </div>
+            </div>
           </div>
         </header><br />
         <br />

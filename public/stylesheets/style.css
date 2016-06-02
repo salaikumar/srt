@@ -53,8 +53,6 @@ height: 10em;
 .sachinImage{
   width: 12em;
     height: 8em;
-    margin-left: 88em;
-    margin-top: -6em;
 }
 .sign{
   margin-left: 48em;
@@ -65,9 +63,22 @@ height: 10em;
   font-size: 2.3em;
 font-style: italic;
 font-weight: 600;
-margin-left: -6em;
 padding-top: 6px;
 }
 .cardContent{
   margin-left: 18em;
+}
+.about{
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 2%;
+  margin-top: 1%;
+}
+.aboutText{
+  line-height: 2;
+  font-size: 15px;
+}
+.godText{
+  font-weight: 800;
+  font-size: 25px;
 }
